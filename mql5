@@ -1,0 +1,115 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                                     MultiCharts MT5|
+//|                                        Developer's site: forexroboteasy.com  |
+//|                                        Developer: Forex Robot Easy Team    |
+//+------------------------------------------------------------------+
+
+// Include necessary libraries and define constants
+#include <Trade\Trade.mqh>
+#include <Indicators\Indicators.mqh>
+
+#define TP_POINTS 100   // Take profit in points
+#define SL_POINTS 50    // Stop loss in points
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//|                             Entry Point                           |
+//|                                                                  |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+   // Check if all predefined criteria are met
+   if (CheckCriteria1() && CheckCriteria2() && CheckCriteria3() && CheckCriteria4())
+   {
+      // Execute trade based on predefined criteria
+      ExecuteTrade();
+   }
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//|                   Functions to Check Predefined Criteria          |
+//|                                                                  |
+//+------------------------------------------------------------------+
+bool CheckCriteria1()
+{
+   // Implement logic to check criteria 1
+   return true;
+}
+
+bool CheckCriteria2()
+{
+   // Implement logic to check criteria 2
+   return true;
+}
+
+bool CheckCriteria3()
+{
+   // Implement logic to check criteria 3
+   return true;
+}
+
+bool CheckCriteria4()
+{
+   // Implement logic to check criteria 4
+   return true;
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//|                     Function to Execute Trade                     |
+//|                                                                  |
+//+------------------------------------------------------------------+
+void ExecuteTrade()
+{
+   // Calculate lot size based on available margin
+   double lotSize = CalculateLotSize();
+
+   // Place market order with the calculated lot size
+   if (OrderSend(Symbol(), OP_BUY, lotSize, Ask, 0, Bid - SL_POINTS * Point, Bid + TP_POINTS * Point))
+   {
+      Print('Trade executed successfully!');
+   }
+   else
+   {
+      Print('Failed to execute trade: ', GetLastError());
+   }
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//|                  Function to Calculate Lot Size                   |
+//|                                                                  |
+//+------------------------------------------------------------------+
+double CalculateLotSize()
+{
+   // Implement logic to calculate lot size based on available margin
+   return 0.1;
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//|                         Other Supporting Functions                |
+//|                                                                  |
+//+------------------------------------------------------------------+
+void OnInit()
+{
+   // Initialize necessary variables and indicators
+}
+
+void OnDeinit(const int reason)
+{
+   // Clean up resources and close any open trades
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//|                         Logical Conclusion                        |
+//|                                                                  |
+//+------------------------------------------------------------------+
+void OnStop()
+{
+   // Print a message indicating the completion of the program
+   Print('MultiCharts MT5 program executed successfully!');
+}
